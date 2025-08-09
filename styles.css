@@ -1,0 +1,453 @@
+/* Digital ONION® Landing Page Styles */
+
+/* CSS Variables */
+:root {
+  --bg: #0f0f11;          /* near-black */
+  --ink: #f7f7f7;         /* off-white text */
+  --muted: #b8b8bf;       /* subtle text */
+  --brand: #7652B0;       /* onion purple */
+  --brand-2: #9a78d1;     /* lighter accent */
+  --radius: 22px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+/* Base Styles */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 1200px at 90% 10%, rgba(154, 120, 209, .18), transparent 60%),
+              radial-gradient(900px 900px at 10% 90%, rgba(118, 82, 176, .22), transparent 55%),
+              var(--bg);
+  color: var(--ink);
+  font: 500 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden; /* keep to one screen */
+  /* Mobile optimizations */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Layout */
+.wrap {
+  min-height: 100dvh;
+  max-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3vw, 32px);
+  /* Safe area support for iPhone X and newer */
+  padding-left: max(clamp(16px, 3vw, 32px), env(safe-area-inset-left));
+  padding-right: max(clamp(16px, 3vw, 32px), env(safe-area-inset-right));
+  padding-top: max(clamp(16px, 3vw, 32px), env(safe-area-inset-top));
+  padding-bottom: max(clamp(16px, 3vw, 32px), env(safe-area-inset-bottom));
+}
+
+.card {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2.5vw, 28px);
+  align-items: center;
+  background: rgba(255, 255, 255, .02);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 3.2vw, 36px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative onion rings */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -35% auto;
+  width: min(48vw, 520px);
+  aspect-ratio: 1/1;
+  background: url("images/onion-graphic-gray.png") center/contain no-repeat;
+  opacity: .15;
+  filter: grayscale(1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand img {
+  height: 42px;
+  display: block;
+}
+
+.badge {
+  font-size: .8rem;
+  font-weight: 700;
+  padding: .35rem .6rem;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, .04);
+}
+
+/* Navigation */
+.cta-inline {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons */
+.btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: .85rem 1.1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  /* Touch optimization */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  min-height: 44px; /* iOS minimum touch target */
+  box-sizing: border-box;
+}
+
+.btn.primary {
+  background: linear-gradient(180deg, var(--brand-2), var(--brand));
+  color: white;
+  box-shadow: 0 6px 16px rgba(118, 82, 176, .35);
+}
+
+.btn.primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 12px rgba(118, 82, 176, .4);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, .18);
+}
+
+/* Main Content */
+main {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(16px, 3vw, 36px);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Typography */
+h1 {
+  margin: 0 0 .3rem;
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+p.lead {
+  margin: 0 0 1rem;
+  font-size: clamp(16px, 1.6vw, 18px);
+  color: var(--muted);
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Points List */
+ul.points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: .6rem 0 0;
+}
+
+ul.points li {
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 12px;
+  padding: .7rem .8rem;
+  font-size: .95rem;
+}
+
+/* Hero Image */
+figure.hero {
+  margin: 0;
+  justify-self: end;
+  position: relative;
+  z-index: 3;
+}
+
+figure.hero img {
+  width: min(540px, 40vw);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .45));
+}
+
+/* Footer */
+footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: .5rem;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+footer a {
+  color: inherit;
+}
+
+/* Keyboard Style */
+.kbd {
+  border: 1px solid rgba(255, 255, 255, .18);
+  padding: .15rem .4rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .04);
+  font-size: .85em;
+}
+
+/* Media Queries */
+
+/* Tablet and small desktop */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  
+  .card::after {
+    inset: auto -20% -25% auto;
+    width: 70vw;
+  }
+}
+
+/* Mobile devices (including iPhone) */
+@media (max-width: 768px) {
+  body {
+    overflow: auto; /* Allow scrolling on mobile */
+  }
+  
+  .wrap {
+    min-height: 100vh;
+    max-height: none; /* Remove max-height constraint */
+    padding: clamp(12px, 4vw, 20px);
+  }
+  
+  .card {
+    width: 100%;
+    gap: clamp(20px, 5vw, 32px);
+    padding: clamp(20px, 5vw, 28px);
+    border-radius: 16px;
+  }
+  
+  /* Header mobile optimizations */
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .brand {
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .brand img {
+    height: 36px;
+  }
+  
+  .badge {
+    font-size: .75rem;
+    padding: .3rem .5rem;
+  }
+  
+  .cta-inline {
+    justify-content: center;
+  }
+  
+  /* Main content mobile */
+  main {
+    gap: clamp(24px, 6vw, 40px);
+    text-align: center;
+  }
+  
+  /* Typography mobile */
+  h1 {
+    font-size: clamp(24px, 6.5vw, 32px);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  p.lead {
+    font-size: clamp(15px, 4vw, 17px);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Points list mobile */
+  ul.points {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 1rem;
+  }
+  
+  ul.points li {
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  /* Hero image mobile */
+  figure.hero {
+    justify-self: center;
+    order: -1; /* Move image above text on mobile */
+  }
+  
+  figure.hero img {
+    width: min(280px, 70vw);
+    margin: 0 auto;
+  }
+  
+  /* Footer mobile */
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+    font-size: .85rem;
+  }
+  
+  /* Button mobile optimizations */
+  .btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-width: 200px;
+  }
+  
+  /* Adjust decorative background for mobile */
+  .card::after {
+    inset: auto -30% -20% auto;
+    width: min(60vw, 300px);
+    opacity: .08;
+  }
+}
+
+/* iPhone specific optimizations */
+@media (max-width: 480px) {
+  .wrap {
+    padding: 16px;
+  }
+  
+  .card {
+    padding: 24px 20px;
+    gap: 24px;
+  }
+  
+  h1 {
+    font-size: clamp(22px, 7vw, 28px);
+  }
+  
+  .brand img {
+    height: 32px;
+  }
+  
+  ul.points li {
+    padding: .9rem;
+    font-size: .95rem;
+  }
+  
+  figure.hero img {
+    width: min(240px, 65vw);
+  }
+  
+  .btn {
+    padding: .9rem 1.3rem;
+    font-size: .95rem;
+    min-width: 180px;
+  }
+}
+
+/* iPhone landscape mode */
+@media (max-width: 896px) and (orientation: landscape) {
+  .wrap {
+    padding: 12px 20px;
+  }
+  
+  .card {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  main {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 32px;
+    align-items: center;
+  }
+  
+  figure.hero {
+    order: 0;
+    justify-self: end;
+  }
+  
+  figure.hero img {
+    width: min(200px, 35vw);
+  }
+  
+  header {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .brand {
+    justify-content: flex-start;
+  }
+}
+
+/* High DPI displays (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .brand img, figure.hero img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Animation (Respect reduced motion preference) */
+@media (prefers-reduced-motion: no-preference) {
+  .btn.primary {
+    transition: transform .15s ease;
+  }
+  
+  .btn.primary:hover {
+    transform: translateY(-2px);
+  }
+}

@@ -4,7 +4,7 @@ A coming soon page for Digital ONION® - your 24/7 thinking partner.
 
 ## Live Site
 
-Visit the live site at: [https://onioncentral.com](https://onioncentral.com)
+Visit the live site at: [https://ONION®central.com](https://ONION®central.com)
 
 ## Features
 
@@ -34,4 +34,4 @@ npx serve .
 
 ## Contact
 
-For early access, email: hello@onioncentral.com
+For early access, email: hello@ONION®central.com

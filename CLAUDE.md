@@ -65,4 +65,4 @@ Class naming follows a flat BEM-like pattern (`.btn`, `.btn.primary`, `.btn--lg`
 ## Key URLs
 
 - **CTA links** → `https://digital.ONION®central.com`
-- **Contact email** → `support@ONION®central.com`
+- **Contact email** → `support@onioncentral.com`

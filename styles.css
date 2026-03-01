@@ -26,6 +26,7 @@ body {
   margin: 0;
   background: var(--bg);
   background-attachment: fixed;
+  overflow-x: hidden;
   color: var(--ink);
   font: 500 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -131,6 +132,7 @@ p.lead {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
 }
 
 .brand img {
@@ -155,7 +157,9 @@ p.lead {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  height: 64px;
+  min-height: 64px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -164,6 +168,7 @@ p.lead {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .site-header nav a.link {
@@ -171,6 +176,10 @@ p.lead {
   text-decoration: none;
   font-size: .9rem;
   font-weight: 600;
+}
+
+.site-header nav .btn {
+  white-space: nowrap;
 }
 
 .site-header nav a.link:hover {
@@ -351,7 +360,7 @@ p.lead {
 /* ── Testimonials ── */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 20px;
 }
 
@@ -505,6 +514,12 @@ p.lead {
   margin-bottom: 1.5rem;
 }
 
+.price-card .badge {
+  display: inline-block;
+  white-space: normal;
+  line-height: 1.35;
+}
+
 .price-card .price-note {
   font-size: .9rem;
   color: var(--muted);
@@ -644,6 +659,15 @@ p.lead {
    ══════════════════════════════════════ */
 
 @media (max-width: 900px) {
+  .site-header .wrap {
+    gap: 10px;
+  }
+
+  .site-header nav .btn {
+    padding: .75rem 1rem;
+    font-size: .92rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
@@ -672,6 +696,20 @@ p.lead {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(40px, 8vw, 72px) 18px;
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+
+  .site-header .wrap {
+    min-height: 60px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
   .site-header nav a.link {
     display: none;
   }
@@ -690,6 +728,25 @@ p.lead {
   }
 }
 
+@media (max-width: 640px) {
+  .brand {
+    gap: 8px;
+  }
+
+  .site-header .brand .badge {
+    display: none;
+  }
+
+  .site-header nav .btn {
+    padding: .68rem .9rem;
+    font-size: .86rem;
+  }
+
+  .section .btn--lg {
+    width: 100%;
+  }
+}
+
 @media (max-width: 480px) {
   :root {
     --section-pad: clamp(36px, 8vw, 64px) 16px;
@@ -701,7 +758,7 @@ p.lead {
   }
 
   .brand img {
-    height: 30px;
+    height: 28px;
   }
 
   h1 { font-size: clamp(26px, 7vw, 34px); }
@@ -720,6 +777,13 @@ p.lead {
 
   .price-card {
     padding: 24px 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header nav .btn {
+    padding: .62rem .75rem;
+    font-size: .82rem;
   }
 }
 

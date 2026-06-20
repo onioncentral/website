@@ -528,6 +528,8 @@
             if (location.search.includes('liveaction')) {
                 const iframe = document.querySelector('.video-embed iframe');
                 if (iframe) iframe.src = 'https://www.youtube.com/embed/CL-mcJ2xTZU';
+                const label = document.querySelector('.video-inner .section-label');
+                if (label) label.textContent = 'Stop Going Round in Circles';
             }
 
             /* Testimonial carousel — auto-rotates every 4.2s, clickable dots */

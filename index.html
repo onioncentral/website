@@ -524,6 +524,12 @@
         </footer>
 
         <script>
+            /* Video variant — append ?=liveaction to the URL for the live-action version */
+            if (location.search.includes('liveaction')) {
+                const iframe = document.querySelector('.video-embed iframe');
+                if (iframe) iframe.src = 'https://www.youtube.com/embed/CL-mcJ2xTZU';
+            }
+
             /* Testimonial carousel — auto-rotates every 4.2s, clickable dots */
             (() => {
                 const quotes = [
